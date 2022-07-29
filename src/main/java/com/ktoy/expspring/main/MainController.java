@@ -7,9 +7,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/main")
 @Slf4j
 public class MainController {
+
+    @GetMapping(value ="/")
+    @AOPInterface
+    public String moveToIndex(){
+        return "redirect:/Main.do";
+    }
 
     @GetMapping(value = "/Main.do")
     @AOPInterface
