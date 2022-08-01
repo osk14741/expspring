@@ -13,13 +13,14 @@ public class MainController {
     @GetMapping(value ="/")
     @AOPInterface
     public String moveToIndex(){
+        log.info("moveToIndex");
         return "redirect:/Main.do";
     }
 
     @GetMapping(value = "/Main.do")
     @AOPInterface
     public String mainIndex(){
-
+        log.info("mainIndex");
         return "main/index";
     }
 }
