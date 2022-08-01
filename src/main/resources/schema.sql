@@ -1,6 +1,6 @@
-drop table if exists security_member;
+-- drop table if exists security_member;
 
-create table security_member(
+create table if not exists security_member(
     memberIdx integer primary key auto_increment,
     username varchar(50) not null,
     password varchar(50) not null,

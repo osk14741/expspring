@@ -27,12 +27,16 @@ public class SecurityConfig {
         http
                 .authorizeRequests()
                 .antMatchers("/security/login").permitAll()
-                .anyRequest().permitAll()
-//                .authenticated()
+//                .antMatchers("/h2-console").permitAll()
+                .anyRequest()
+//                .permitAll()
+                .authenticated()
             .and()
 //                .addFilterAfter(, BasicAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/security/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
                 .failureUrl("/security/login")
                 .defaultSuccessUrl("/Main.do");
 
