@@ -1,9 +1,12 @@
 package com.ktoy.expspring.aop;
 
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
@@ -12,6 +15,7 @@ import org.springframework.util.StopWatch;
 @Slf4j
 public class LoggingAOP {
 
+    // Around -> Before -> () -> After -> Around
     @Around("execution(* com.ktoy.expspring..*.*(..))")
     public Object logMethodName(ProceedingJoinPoint pjp) throws Throwable{
         String className = pjp.getTarget().getClass().getName();
@@ -28,5 +32,15 @@ public class LoggingAOP {
         log.info("===================================================================================================");
 
         return result;
+    }
+
+    @Before("execution(* com.ktoy.expspring..*.*(..))")
+    public void beforeAOP(JoinPoint joinPoint) throws Throwable{
+        log.info("BEFORE AOP=========================================================================================");
+    }
+
+    @After("execution(* com.ktoy.expspring..*.*(..))")
+    public void afterAOP(JoinPoint joinPoint) throws Throwable{
+        log.info("AFTER AOP==========================================================================================");
     }
 }
