@@ -22,14 +22,14 @@ public class LoggingAOP {
         String methodName = pjp.getSignature().getName();
         StopWatch sw = new StopWatch();
         sw.start();
-        log.info("===================================================================================================");
+        log.info("AROUND AOP(BEFORE PROCEED)===================================================================================================");
         log.info("[CONTROLLER LOCATION] " + className + "." + methodName);
         // 현재 로그인 된 유저도 적어보자. 근데 로그인 실패 등은 filter 에서 걸리니 거기서도 적어야 할 듯?
         Object result = pjp.proceed();
         sw.stop();
         long executionTime = sw.getTotalTimeMillis();
         log.info("[EXECUTION TIME] " + executionTime + " ms");
-        log.info("===================================================================================================");
+        log.info("AROUND AOP(AFTER PROCEED)===================================================================================================");
 
         return result;
     }
