@@ -1,5 +1,6 @@
 package com.ktoy.expspring.filter;
 
+import com.ktoy.expspring.member.MemberDTO;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -15,6 +16,7 @@ public class ApiFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
         Filter.super.init(filterConfig);
+        MemberDTO memberDTO = new MemberDTO();
         log.info("========INIT FILTER(ApiFilter.java)========");
     }
 
