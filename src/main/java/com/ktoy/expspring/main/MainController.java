@@ -23,4 +23,6 @@ public class MainController {
         log.info("mainIndex");
         return "main/index";
     }
+
+
 }

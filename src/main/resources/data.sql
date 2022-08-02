@@ -1,3 +1,5 @@
+delete from security_member;
+
 INSERT INTO security_member
 (
     username, password, realName, phoneNumber, email, age

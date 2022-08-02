@@ -8,6 +8,6 @@ import java.util.List;
 @Mapper
 public interface MemberMapper {
 
-    @Select("SELECT * FROM user")
+    @Select("SELECT * FROM security_member")
     List<MemberDTO> findAll();
 }
