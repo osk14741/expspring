@@ -15,5 +15,9 @@ public class MemberService {
         return memberDao.findAll();
     }
 
+    public MemberDTO loadUserByUsername(String username){
+        return memberDao.loadMemByUsername(username);
+    }
+
 
 }

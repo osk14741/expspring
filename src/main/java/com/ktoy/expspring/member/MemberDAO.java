@@ -17,5 +17,9 @@ public class MemberDAO {
         return memberMapper.findAll();
     }
 
+    public MemberDTO loadMemByUsername(String username){
+        return memberMapper.loadMemByUsername(username);
+    }
+
 
 }

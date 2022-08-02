@@ -16,7 +16,7 @@ import org.springframework.util.StopWatch;
 public class LoggingAOP {
 
     // Around -> Before -> () -> After -> Around
-    @Around("execution(* com.ktoy.expspring..*.*(..))")
+//    @Around("execution(* com.ktoy.expspring..*.*(..))")
     public Object logMethodName(ProceedingJoinPoint pjp) throws Throwable{
         String className = pjp.getTarget().getClass().getName();
         String methodName = pjp.getSignature().getName();
@@ -34,12 +34,12 @@ public class LoggingAOP {
         return result;
     }
 
-    @Before("execution(* com.ktoy.expspring..*.*(..))")
+//    @Before("execution(* com.ktoy.expspring..*.*(..))")
     public void beforeAOP(JoinPoint joinPoint) throws Throwable{
         log.info("========BEFORE AOP========");
     }
 
-    @After("execution(* com.ktoy.expspring..*.*(..))")
+//    @After("execution(* com.ktoy.expspring..*.*(..))")
     public void afterAOP(JoinPoint joinPoint) throws Throwable{
         log.info("========AFTER AOP========");
     }

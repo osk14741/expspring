@@ -21,7 +21,7 @@ public class MainController {
     @AOPInterface
     public String mainIndex(){
         log.info("mainIndex");
-        return "main/index";
+        return "main/index.html";
     }
 
 

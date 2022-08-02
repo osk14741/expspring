@@ -27,6 +27,9 @@ public class ApiFilter implements Filter {
 
         String requestURI = req.getRequestURI();
 
+        // 아이디 비교 하고
+        // token auth token
+
         log.info("========BEFORE DOFILTER(ApiFilter.java) REQUEST URI : " + requestURI + " ========");
         chain.doFilter(request, response);
         log.info("========AFTER DOFILTER(ApiFilter.java) REQUEST URI : " + requestURI + " ========");
