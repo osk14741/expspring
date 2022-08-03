@@ -29,6 +29,7 @@ public class SecurityConfig {
 
     private final SecuritySuccessHandler securitySuccessHandler;
     private final SecurityFailureHandler securityFailureHandler;
+    private final CustomAccessDeniedHandler customAccessDeniedHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -44,6 +45,10 @@ public class SecurityConfig {
             .antMatchers("/security/only_admin").hasRole("ADMIN")
             .antMatchers("/security/only_member").hasRole("MEMBER")
             .anyRequest().authenticated();
+
+        http
+            .exceptionHandling()
+            .accessDeniedHandler(customAccessDeniedHandler);
 
         http
             .formLogin()

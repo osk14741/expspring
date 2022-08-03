@@ -20,17 +20,17 @@ public class SecurityController {
 
     @RequestMapping(value="/login")
     public String login(MemberDTO memberDTO){
-        return "/login.html";
+        return "/security/login.html";
     }
 
     @RequestMapping(value="/only_admin")
     public String onlyAdmin(){
-        return "/only_admin.html";
+        return "/security/only_admin.html";
     }
 
     @RequestMapping(value="/only_member")
     public String onlyMember(){
-        return "/only_member.html";
+        return "/security/only_member.html";
     }
 
 

@@ -39,10 +39,6 @@ public class CustomUserDetailsService implements UserDetailsService {
             log.info(memberDTO.getUserRole() + "? role 다른듯?");
         }
 
-
-        List<MemberDTO> memList = memberService.findAll();
-        log.info(memList.toString());
-
         return new User(memberDTO.getUsername(), memberDTO.getPassword(), authorities);
     }
 }
