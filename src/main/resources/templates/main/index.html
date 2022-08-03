@@ -5,7 +5,9 @@
 </head>
 <body>
 <div style="text-align:center; margin-top: 100px;">
-  <h1>LOG IN SUCCESS</h1>
+  <h1>LOG IN SUCCESS, HELLO
+    <span th:text="${session.get('SPRING_SECURITY_CONTEXT').Authentication.Principal.Username}"></span>
+  </h1>
   <button onclick="location.href='/security/only_member'">security/only_member</button>
   <button onclick="location.href='/security/only_admin'">security/only_admin</button>
   <hr>
