@@ -1,5 +1,7 @@
 package com.ktoy.expspring.member;
 
+import com.ktoy.expspring.logging.LoggingDAO;
+import com.ktoy.expspring.logging.LoggingDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
