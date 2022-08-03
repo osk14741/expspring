@@ -7,9 +7,12 @@
 <h1>Please Log In</h1>
 <p>admin / 1234 | member / 1234</p>
 <div th:if="${param.error}">
-  Invalid username and password.<p th:value="${param.error}"></p></div>
+  Invalid username and password.</div>
 <div th:if="${param.logout}">
   You have been logged out.</div>
+<div th:if="${param.dup}">
+  You have been logged out due to duplicate connection.</div>
+<br>
 <form th:action="@{/security/login_proc}" method="post">
   <div>
     <input type="text" name="username" placeholder="Username" value="admin"/>

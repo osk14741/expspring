@@ -1,5 +1,6 @@
 package com.ktoy.expspring.security;
 
+import lombok.CustomLog;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class SecurityConfig {
     private final SecuritySuccessHandler securitySuccessHandler;
     private final SecurityFailureHandler securityFailureHandler;
     private final CustomAccessDeniedHandler customAccessDeniedHandler;
+    private final CustomLogoutSuccessHandler customLogoutSuccessHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder(){
@@ -69,8 +71,14 @@ public class SecurityConfig {
         http
             .logout()
             .logoutUrl("/security/logout")
-            .logoutSuccessUrl("/security/login")
+            .logoutSuccessHandler(customLogoutSuccessHandler)
             .invalidateHttpSession(true);
+
+        http // UserDetails를 custom 했다면 .equals()를 수정할 것.
+            .sessionManagement()
+            .maximumSessions(1)
+            .maxSessionsPreventsLogin(false)
+            .expiredUrl("/security/login?dup");
 
         return http.build();
     }

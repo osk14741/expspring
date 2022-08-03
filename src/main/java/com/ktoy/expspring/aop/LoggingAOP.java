@@ -16,7 +16,8 @@ import org.springframework.util.StopWatch;
 public class LoggingAOP {
 
     // Around -> Before -> () -> After -> Around
-    @Around("execution(* com.ktoy.expspring..*Controller.*(..)) || execution(* com.ktoy.expspring..*Handler.*(..))")
+    @Around("execution(* com.ktoy.expspring..*Controller.*(..)) " +
+            "|| execution(* com.ktoy.expspring..*Handler.*(..))")
     public Object logMethodName(ProceedingJoinPoint pjp) throws Throwable{
         String className = pjp.getTarget().getClass().getSimpleName();
         String methodName = pjp.getSignature().getName();

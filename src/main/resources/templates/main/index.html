@@ -8,6 +8,12 @@
   <h1>LOG IN SUCCESS, HELLO
     <span th:text="${session.get('SPRING_SECURITY_CONTEXT').Authentication.Principal.Username}"></span>
   </h1>
+<!--  <h4>-->
+<!--    <span th:text="${session.get('SPRING_SECURITY_CONTEXT')}"></span>-->
+<!--  </h4>-->
+  <h4 th:if="${param.access_denied}">
+    You don't have the authority to go that page.
+  </h4>
   <button onclick="location.href='/security/only_member'">security/only_member</button>
   <button onclick="location.href='/security/only_admin'">security/only_admin</button>
   <hr>
