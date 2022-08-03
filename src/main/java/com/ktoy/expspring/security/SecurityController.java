@@ -20,13 +20,18 @@ public class SecurityController {
 
     @RequestMapping(value="/login")
     public String login(MemberDTO memberDTO){
-        log.info("HELLO LOGIN");
         return "/login.html";
     }
 
-//    @PostMapping(value="/login_action")
-//    public String login_action(MemberDTO memberDTO){
-//        log.info("HELLO LOGIN_ACTION");
-//        return "redirect:/Main.do";
-//    }
+    @RequestMapping(value="/only_admin")
+    public String onlyAdmin(){
+        return "/only_admin.html";
+    }
+
+    @RequestMapping(value="/only_member")
+    public String onlyMember(){
+        return "/only_member.html";
+    }
+
+
 }

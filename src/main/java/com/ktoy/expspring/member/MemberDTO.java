@@ -10,5 +10,5 @@ public class MemberDTO {
     private String phoneNumber;
     private String email;
     private int age;
-
+    private int userRole;
 }
