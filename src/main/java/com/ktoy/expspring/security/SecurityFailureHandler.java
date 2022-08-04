@@ -23,7 +23,7 @@ public class SecurityFailureHandler implements AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        log.info("로그인 실패");
+        log.info("|| 로그인 실패");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 

@@ -25,7 +25,7 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         // String username = authentication.getName();
 
-        log.info("로그인 성공");
+        log.info("|| 로그인 성공");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 

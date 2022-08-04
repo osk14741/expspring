@@ -23,7 +23,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-        log.info("ACCESS DENIED");
+        log.info("|| ACCESS DENIED");
         loggingService.insertLogging(new LoggingDTO(LoggingCode.ACCESS_DENIED.getErrorCode(), LoggingCode.ACCESS_DENIED.getErrorText()));
         response.sendRedirect("/Main.do?access_denied");
     }
