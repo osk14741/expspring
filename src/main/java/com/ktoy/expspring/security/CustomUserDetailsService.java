@@ -20,6 +20,9 @@ import java.util.List;
 @AllArgsConstructor
 @Slf4j
 public class CustomUserDetailsService implements UserDetailsService {
+
+    // UserDetailsService를 implemets 받아서 loadUserByUsername을 작성해야 로직을 탐.
+
     private final MemberService memberService;
 
     @Override
@@ -39,6 +42,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             log.info(memberDTO.getUserRole() + "? role 다른듯?");
         }
 
+        // User를 UserDetails를 implements해서 바꿨을 때 duplication session 체크에서
+        // .equals()가 작동을 하지 않으므로 .equals()를 재정의 해 줄 필요성이 있음.
         return new User(memberDTO.getUsername(), memberDTO.getPassword(), authorities);
     }
 }

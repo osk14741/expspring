@@ -23,7 +23,13 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        // TODO : authentication 에서 username 뽑아오자. -> customDetail...
+        // String username = authentication.getName();
+        String username = authentication.getName();
+        
+//        session 제거
+//        request.getSession().invalidate();
+
+        log.info("username = " + username);
         loggingService.insertLogging(new LoggingDTO(LoggingCode.LOGOUT.getErrorCode(), LoggingCode.LOGOUT.getErrorText()));
         response.sendRedirect("/security/login?logout");
     }
