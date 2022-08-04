@@ -25,5 +25,13 @@ public class MemberDAO {
         return memberMapper.insertUser(memberDTO);
     }
 
+    public MemberDTO selectOneByMemberIdx(MemberDTO memberDTO) {
+        return memberMapper.selectOneByMemberIdx(memberDTO);
+    }
+
+    public boolean updateMember(MemberDTO memberDTO) {
+        return memberMapper.updateMember(memberDTO);
+    }
+
 
 }

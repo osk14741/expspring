@@ -20,6 +20,8 @@
   <form th:action="@{/security/logout}" method="post">
     <input type="submit" value="LOGOUT">
   </form>
+  <hr>
+  <input type="button" value="MEMBER LIST" onclick="location.href='/member/list'"/>
 </div>
 <div style="text-align: center; font-size: 5pt;" th:each="item : ${LoggingList}">
   <p th:text="${item}"></p>

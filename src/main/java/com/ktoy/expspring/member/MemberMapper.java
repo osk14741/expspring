@@ -3,6 +3,7 @@ package com.ktoy.expspring.member;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -20,4 +21,13 @@ public interface MemberMapper {
             "values " +
             "(#{username}, #{password}, #{realName}, #{phoneNumber}, #{email}, #{age}, #{userRole})")
     boolean insertUser(MemberDTO memberDTO);
+
+    @Select("SELECT * FROM security_member where memberIdx=${memberIdx}")
+    MemberDTO selectOneByMemberIdx(MemberDTO memberDTO);
+
+    @Update("UPDATE security_member SET " +
+            "(username, realName, phoneNumber, email, age, userRole) " +
+            "= ('${username}', '${realName}', '${phoneNumber}', '${email}', ${age}, ${userRole})" +
+            " WHERE memberIdx = ${memberIdx}")
+    boolean updateMember(MemberDTO memberDTO);
 }

@@ -30,20 +30,43 @@ public class MemberController {
     public ModelAndView memberList() {
 
         ModelAndView mav = new ModelAndView();
-        mav.setViewName("member_list");
+        mav.setViewName("/member/member_list.html");
         mav.addObject("memberList", memberService.findAll());
 
-        log.info(memberService.findAll().toString());
+        return mav;
+    }
+
+    @PostMapping(value = "/update")
+    public ModelAndView memberUpdate(MemberDTO memberDTO) {
+
+        MemberDTO outputDTO = memberService.selectOneByMemberIdx(memberDTO);
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/member/member_update.html");
+        mav.addObject("member", outputDTO);
+
+        return mav;
+    }
+
+    @PostMapping(value = "/Update.do")
+    public ModelAndView memberUpdateAction(MemberDTO memberDTO) {
+
+        memberService.updateMember(memberDTO);
+
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("/member/member_update.html");
+        mav.addObject("member", memberDTO);
 
         return mav;
     }
 
     @PostMapping(value = "/Sign_in.do")
     public ModelAndView signIn(MemberDTO memberDTO) {
+
         ModelAndView mav = new ModelAndView();
 
         boolean flag = memberService.insertUser(memberDTO);
-        if(flag) mav.setViewName("redirect:security/login?error");
+        if (flag) mav.setViewName("redirect:security/login?error");
         else mav.setViewName("redirect:security/login");
 
         return mav;

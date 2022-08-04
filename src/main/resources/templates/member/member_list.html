@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="text-align: center;">
+  <h1>MEMBER LIST</h1>
+    <hr>
+    <div th:each="items : ${memberList}">
+        <span th:text="${items.memberIdx} + '. ' + ${items.username} + '/' + ${items.realName} + '/' + ${items.email} + '/' + ${items.age}"></span>
+        <form action="/member/update" method="post">
+            <input type="hidden"
+                   th:name="${_csrf.parameterName}"
+                   th:value="${_csrf.token}" />
+            <input type="submit" value="UPDATE" />
+            <input type="hidden" th:value="${items.memberIdx}" name="memberIdx"/>
+        </form>
+        <hr>
+    </div>
+  <input type="button" onclick="location.href='/Main.do';" value="GO TO MAIN.DO"/>
+
+
+</body>
+</html>
