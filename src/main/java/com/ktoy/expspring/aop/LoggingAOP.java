@@ -21,7 +21,7 @@ public class LoggingAOP {
         Object[] signatureArgs = pjp.getArgs();
         StopWatch sw = new StopWatch();
         sw.start();
-        String beforeString = "START====" + className + "." + methodName + "====START";
+        String beforeString = "START================" + className + "." + methodName + "=====================";
         log.info(beforeString);
         Object result = pjp.proceed();
 
@@ -33,7 +33,7 @@ public class LoggingAOP {
         sw.stop();
         long executionTime = sw.getTotalTimeMillis();
         log.info("|| EXECUTION TIME : " + executionTime + " ms");
-        String afterString = "END======" + className + "." + methodName + "======END";
+        String afterString = "END==================" + className + "." + methodName + "=====================";
         log.info(afterString);
 
         return result;

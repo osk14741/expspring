@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 public class SecurityController {
 
     @RequestMapping(value="/login")
-    public String login(MemberDTO memberDTO){
+    public String login(){
         return "/security/login.html";
     }
 
