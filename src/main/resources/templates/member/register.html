@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>REGISTER PAGE</h1>
+<hr>
+<form action="/member/Sign_in.do" method="post">
+    <input type="hidden"
+           th:name="${_csrf.parameterName}"
+           th:value="${_csrf.token}" />
+    <p><label>username</label><input type="text" name="username" value="testuser"/></p>
+    <p><label>password</label><input type="text" name="password" value="1234"/></p>
+    <p><label>realName</label><input type="text" name="realName" value="테스트"/></p>
+    <p><label>phoneNumber</label><input type="text" name="phoneNumber" value="010-1234-1234"/></p>
+    <p><label>email</label><input type="text" name="email" value="test@test.co.kr"/></p>
+    <p><label>age</label><input type="text" name="age" value="12"/></p>
+    <p><label>userRole</label><input type="text" name="userRole" value="2"/></p>
+
+    <input type="submit" value="SIGN IN"/>
+</form>
+</body>
+</html>

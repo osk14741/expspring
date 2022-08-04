@@ -29,7 +29,6 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
 //        session 제거
 //        request.getSession().invalidate();
 
-        log.info("|| username = " + username);
         loggingService.insertLogging(new LoggingDTO(LoggingCode.LOGOUT.getErrorCode(), LoggingCode.LOGOUT.getErrorText()));
         response.sendRedirect("/security/login?logout");
     }

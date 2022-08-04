@@ -26,8 +26,10 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
         // String username = authentication.getName();
 
         log.info("|| 로그인 성공");
-        String username = request.getParameter("username");
+        String username = authentication.getName();
         String password = request.getParameter("password");
+
+        request.getSession().setAttribute("username", username);
 
         loggingService.insertLogging(new LoggingDTO("0", "Username : " + username + ", Password : " + password));
 

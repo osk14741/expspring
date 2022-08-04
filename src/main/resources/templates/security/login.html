@@ -35,5 +35,18 @@
   <br>
   <input type="submit" value="MEMBER Log in" />
 </form>
+<hr>
+<form th:action="@{/security/login_proc}" method="post">
+  <div>
+    <input type="text" name="username" placeholder="Username" value="testuser"/>
+  </div>
+  <div>
+    <input type="password" name="password" placeholder="Password" value="1234"/>
+  </div>
+  <br>
+  <input type="submit" value="TESTUSER Log in" />
+</form>
+<hr>
+<button onclick="location.href='/member/register'">REGISTER</button>
 </body>
 </html>

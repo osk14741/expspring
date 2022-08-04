@@ -49,10 +49,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
+            .antMatchers("/member/register", "/member/Sign_in.do").permitAll()
             .antMatchers("/security/login").permitAll()
             .antMatchers("/security/logout").permitAll()
-            .antMatchers("/security/only_admin").hasRole("ADMIN")
-            .antMatchers("/security/only_member").hasRole("MEMBER")
+            .antMatchers("/security/only_admin").hasAnyRole(new String[]{"ADMIN", "TEST"})
+            .antMatchers("/security/only_member").hasAnyRole(new String[]{"MEMBER", "TEST"})
             .anyRequest().authenticated();
 
         http

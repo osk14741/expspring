@@ -3,7 +3,7 @@ drop table if exists logging_table;
 
 create table if not exists security_member(
     memberIdx integer primary key auto_increment,
-    username varchar(50) not null,
+    username varchar(50) not null unique,
     password varchar(255) not null,
     realName varchar(50) not null,
     phoneNumber varchar(50) not null,

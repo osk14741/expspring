@@ -1,6 +1,7 @@
 package com.ktoy.expspring.security;
 
 
+import com.ktoy.expspring.member.MemberDAO;
 import com.ktoy.expspring.member.MemberDTO;
 import com.ktoy.expspring.member.MemberService;
 import lombok.AllArgsConstructor;
@@ -23,12 +24,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     // UserDetailsService를 implemets 받아서 loadUserByUsername을 작성해야 로직을 탐.
 
-    private final MemberService memberService;
+    private final MemberDAO memberService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
         MemberDTO memberDTO;
-        memberDTO = memberService.loadUserByUsername(username);
+        memberDTO = memberService.loadMemByUsername(username);
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
@@ -38,6 +39,8 @@ public class CustomUserDetailsService implements UserDetailsService {
             authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
         } else if(memberDTO.getUserRole() == 1){
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+        } else if(memberDTO.getUserRole() == 2){
+            authorities.add(new SimpleGrantedAuthority(Role.TEST.getValue()));
         } else {
             log.info(memberDTO.getUserRole() + "? role 다른듯?");
         }
