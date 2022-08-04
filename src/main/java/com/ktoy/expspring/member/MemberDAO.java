@@ -21,5 +21,9 @@ public class MemberDAO {
         return memberMapper.loadMemByUsername(username);
     }
 
+    public boolean insertUser(MemberDTO memberDTO) {
+        return memberMapper.insertUser(memberDTO);
+    }
+
 
 }

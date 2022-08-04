@@ -14,4 +14,10 @@ public interface MemberMapper {
 
     @Select("SELECT * FROM security_member where username=#{username}")
     MemberDTO loadMemByUsername(String username);
+
+    @Insert("Insert into security_member " +
+            "(username, password, realName, phoneNumber, email, age, userRole)" +
+            "values " +
+            "(#{username}, #{password}, #{realName}, #{phoneNumber}, #{email}, #{age}, #{userRole})")
+    boolean insertUser(MemberDTO memberDTO);
 }

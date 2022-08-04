@@ -2,6 +2,8 @@ package com.ktoy.expspring.member;
 
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class MemberDTO {
     private String username;
@@ -11,4 +13,5 @@ public class MemberDTO {
     private String email;
     private int age;
     private int userRole; // 0 -> admin, 1 -> member
+
 }
