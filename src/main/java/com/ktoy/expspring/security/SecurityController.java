@@ -1,6 +1,8 @@
 package com.ktoy.expspring.security;
 
+import com.ktoy.expspring.event.CustomEventPublisher;
 import com.ktoy.expspring.member.MemberDTO;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -14,9 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping(value="/security")
 @Slf4j
 public class SecurityController {
+
+    private final CustomEventPublisher customEventPublisher;
 
     @RequestMapping(value="/login")
     public String login(){

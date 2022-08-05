@@ -1,5 +1,7 @@
 package com.ktoy.expspring.member;
 
+import com.ktoy.expspring.event.CustomEvent;
+import com.ktoy.expspring.event.CustomEventPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import static com.ktoy.expspring.common.StaticUtil.llc;
 public class MemberController {
 
     private final MemberService memberService;
+    private final CustomEventPublisher customEventPublisher;
 
     @RequestMapping(value = "/register")
     public ModelAndView memberRegister() {
