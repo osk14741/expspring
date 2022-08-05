@@ -1,11 +1,13 @@
 package com.ktoy.expspring.aop;
 
+import com.fasterxml.jackson.databind.deser.BasicDeserializerFactory;
 import com.ktoy.expspring.common.RequestUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.RequestContext;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.aspectj.weaver.ast.Test;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -37,7 +39,7 @@ public class LoggingAOP {
 
         sw.start();
         String beforeString;
-        if(flagFromAOP) beforeString = "|| SERVICE START===="+className + "." + methodName;
+        if(flagFromAOP) beforeString = "||=|| SERVICE START===="+className + "." + methodName;
         else beforeString = "   SERVICE START===="+className + "." + methodName;
 
         int beforeStringLength = 150 - beforeString.length();
@@ -75,7 +77,7 @@ public class LoggingAOP {
         int sub;
         String param;
         for (int i = 0; i < signatureArgs.length; i++) {
-            if(flagFromAOP) param = "|| || <== PARAM : " + signatureArgs[i].toString();
+            if(flagFromAOP) param = "||=|| <== PARAM : " + signatureArgs[i].toString();
             else param = "   || <== PARAM : " + signatureArgs[i].toString();
             sub = lengthOfBeforeString - param.length();
             if(sub > 0){
@@ -88,7 +90,7 @@ public class LoggingAOP {
 
         String resultString;
         if (result != null) {
-            if(flagFromAOP) resultString = "|| || ==> RETURN : " + result;
+            if(flagFromAOP) resultString = "||=|| ==> RETURN : " + result;
             else resultString = "   || ==> RETURN : " + result;
             sub = lengthOfBeforeString - resultString.length();
             if (sub > 0) {
@@ -102,7 +104,7 @@ public class LoggingAOP {
         sw.stop();
         long executionTime = sw.getTotalTimeMillis();
         String mils = String.valueOf(executionTime);
-        if(flagFromAOP) mils = "|| || EXECUTION TIME : " + mils + " ms";
+        if(flagFromAOP) mils = "||=|| EXECUTION TIME : " + mils + " ms";
         else mils = "   || EXECUTION TIME : " + mils + " ms";
         sub = lengthOfBeforeString - mils.length();
         if (sub > 0) {
@@ -112,7 +114,7 @@ public class LoggingAOP {
         }
         log.info(mils);
         String afterString;
-        if(flagFromAOP) afterString = "|| SERVICE END======" + className + "." + methodName;
+        if(flagFromAOP) afterString = "||=|| SERVICE END======" + className + "." + methodName;
         else afterString = "   SERVICE END======" + className + "." + methodName;
         int afterStringLength = 150 - afterString.length();
         for (int i = 0; i < afterStringLength; i++) {
