@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.ktoy.expspring.common.StaticUtil.llc;
+
 @Slf4j
 @Component
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class CustomLogoutSuccessHandler implements LogoutSuccessHandler {
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         // String username = authentication.getName();
         String username = authentication.getName();
-        
+        llc.add("SIGN OUT SUCCESS");
 //        session 제거
 //        request.getSession().invalidate();
 

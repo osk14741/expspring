@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.ktoy.expspring.common.StaticUtil.llc;
+
 @Slf4j
 @Component
 @AllArgsConstructor
@@ -23,7 +25,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
     @Override
     public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException accessDeniedException) throws IOException, ServletException {
-        log.info("|| ACCESS DENIED");
+        llc.add("ACCESS DENIED");
         loggingService.insertLogging(new LoggingDTO(LoggingCode.ACCESS_DENIED.getErrorCode(), LoggingCode.ACCESS_DENIED.getErrorText()));
         response.sendRedirect("/Main.do?access_denied");
     }

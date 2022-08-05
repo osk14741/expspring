@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.ktoy.expspring.common.StaticUtil.llc;
+
 @Slf4j
 @Component
 @AllArgsConstructor
@@ -25,7 +27,7 @@ public class SecuritySuccessHandler implements AuthenticationSuccessHandler {
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         // String username = authentication.getName();
 
-        log.info("|| 로그인 성공");
+        llc.add("SIGN IN SUCCESS");
         String username = authentication.getName();
         String password = request.getParameter("password");
 

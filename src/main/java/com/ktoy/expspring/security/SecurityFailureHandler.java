@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static com.ktoy.expspring.common.StaticUtil.llc;
+
 @Component
 @AllArgsConstructor
 @Slf4j
@@ -23,7 +25,7 @@ public class SecurityFailureHandler implements AuthenticationFailureHandler {
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        log.info("|| 로그인 실패");
+        llc.add("SIGN IN FAILED");
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 

@@ -34,8 +34,6 @@ public class LoggingAOP {
         StopWatch sw = new StopWatch();
 
         if(flagFromAOP) log.info("|| ");
-        else log.info(" ");
-
 
         sw.start();
         String beforeString;
@@ -54,22 +52,25 @@ public class LoggingAOP {
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes()
         ).getRequest();
 
-//        if(lls.size() > 0){
-//            if(flagFromAOP){
-//                log.info("|| ||==== PERSONAL LOGGING START");
-//                for (Object obj : lls) {
-//                    log.info("|| || " + obj);
-//                }
-//                log.info("|| ||==== PERSONAL LOGGING END");
-//            } else {
-//                log.info("   ||==== PERSONAL LOGGING START");
-//                for (Object obj : lls) {
-//                    log.info("   || " + obj);
-//                }
-//                log.info("   ||==== PERSONAL LOGGING END");
-//            }
-//            lls.clear();
-//        }
+        if(lls.size() > 0){
+            if(flagFromAOP){
+                log.info("|| ||==== USER LOGGING");
+                for (Object obj : lls) {
+                    log.info("|| || " + obj);
+                }
+                log.info("|| ||==== USER LOGGING");
+                log.info("|| ||");
+            } else {
+                log.info("   ||==== USER LOGGING");
+                for (Object obj : lls) {
+                    log.info("   || " + obj);
+                }
+                log.info("   ||==== USER LOGGING");
+                log.info("   ||");
+            }
+            lls.clear();
+
+        }
 
         int sub;
         String param;
@@ -149,14 +150,15 @@ public class LoggingAOP {
                 (ServletRequestAttributes) RequestContextHolder.getRequestAttributes()
         ).getRequest();
 
-//        if(llc.size() > 0){
-//            log.info("||==== PERSONAL LOGGING START");
-//            for(Object obj : llc){
-//                log.info("|| " + obj);
-//            }
-//            log.info("||==== PERSONAL LOGGING END");
-//            llc.clear();
-//        }
+        if(llc.size() > 0){
+            log.info("||==== USER LOGGING");
+            for(Object obj : llc){
+                log.info("|| " + obj);
+            }
+            log.info("||==== USER LOGGING");
+            llc.clear();
+            log.info("||");
+        }
 
         int sub;
         String username;

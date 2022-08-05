@@ -28,9 +28,9 @@ public class MemberService{
         return memberDao.findAll();
     }
 
-    public MemberDTO loadUserByUsername(String username){
-        return memberDao.loadMemByUsername(username);
-    }
+//    public MemberDTO loadUserByUsername(String username){
+//        return memberDao.loadMemByUsername(username);
+//    }
 
     public boolean insertUser(MemberDTO memberDTO) {
         try{
