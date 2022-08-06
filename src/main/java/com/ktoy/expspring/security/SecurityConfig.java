@@ -51,7 +51,7 @@ public class SecurityConfig {
         http
             .formLogin()
             .loginPage("/security/login")
-            .loginProcessingUrl("/security/login_proc") // form의 action에서 줄 url, method=post
+            .loginProcessingUrl("/security/login_proc") // URL in form(action), method = post
             .defaultSuccessUrl("/Main.do")
             .successHandler(securitySuccessHandler)
             .failureHandler(securityFailureHandler)
@@ -63,7 +63,7 @@ public class SecurityConfig {
             .logoutSuccessHandler(customLogoutSuccessHandler)
             .invalidateHttpSession(true); // session 제거 여부
 
-        http // UserDetails를 custom 했다면 .equals()를 수정할 것.
+        http // If customize UserDetails, also need to customize .equals()
             .sessionManagement()
             .maximumSessions(1) // 동시 접속 가능한 세션 수, -1 -> 무제한
             .maxSessionsPreventsLogin(false) // false -> 이전 접속자 만료, true -> 새 접속자 막기
