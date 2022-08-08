@@ -61,18 +61,15 @@ public class SecurityConfig {
             .logout()
             .logoutUrl("/security/logout")
             .logoutSuccessHandler(customLogoutSuccessHandler)
-            .invalidateHttpSession(true); // session 제거 여부
+            .invalidateHttpSession(true); // Session 제거 여부
 
         http // If customize UserDetails, also need to customize .equals()
             .sessionManagement()
             .maximumSessions(1) // 동시 접속 가능한 세션 수, -1 -> 무제한
             .maxSessionsPreventsLogin(false) // false -> 이전 접속자 만료, true -> 새 접속자 막기
-            .expiredUrl("/security/login?dup");
+            .expiredUrl("/security/login?dup") // Session이 만료됐을 때 이동할 URL
+            ;
 
         return http.build();
     }
-
-
-
-
 }
