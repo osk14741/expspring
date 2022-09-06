@@ -17,3 +17,10 @@ create table if not exists logging_table(
     loggingType varchar(255) not null,
     loggingText varchar(255)
 );
+
+create table if not exists board_table(
+    boardIdx integer primary key auto_increment,
+    title varchar(255) not null,
+    content varchar(500) not null,
+    regDate date default current_timestamp
+);
