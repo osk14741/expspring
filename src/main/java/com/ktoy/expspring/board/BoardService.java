@@ -13,4 +13,5 @@ public class BoardService {
     public List<BoardDTO> selectAll(){
         return boardMapper.selectAll();
     }
+
 }

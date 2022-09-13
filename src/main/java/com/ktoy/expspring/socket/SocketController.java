@@ -12,6 +12,7 @@ public class SocketController {
     public String socketChat(){
         log.info("@ChatController, chat Get()");
 
-        return "/socket/chat.html";
+        return "socket/chat";
     }
+
 }
