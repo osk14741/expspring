@@ -26,6 +26,10 @@
   <input type="button" value="BOARD LIST" onclick="location.href='/board/list'"/>
 </div>
 <hr>
+<div style="text-align: center; font-size: 5pt;" th:each="item : ${showFileInDirList}">
+  <p th:text="${item}"></p>
+</div>
+<hr>
 <div style="text-align: center; font-size: 5pt;" th:each="item : ${LoggingList}">
   <p th:text="${item}"></p>
 </div>

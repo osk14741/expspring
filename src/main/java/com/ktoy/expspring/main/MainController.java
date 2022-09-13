@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -35,8 +37,24 @@ public class MainController {
         mav.setViewName("main/index.html");
         mav.addObject("LoggingList", list);
 
+        List<String> showFileInDirList = new ArrayList<>();
+        showFilesInDir("./src/main/resources/templates", showFileInDirList);
+        mav.addObject("showFileInDirList", showFileInDirList);
+
         return mav;
     }
 
+    public void showFilesInDir(String dirPath, List<String> fileList) {
+        File dir = new File(dirPath);
+        File files[] = dir.listFiles();
 
+        for (int i = 0; i < files.length; i++) {
+            File file = files[i];
+            if (file.isDirectory()) {
+                showFilesInDir(file.getPath(), fileList);
+            } else {
+                fileList.add(file.getName());
+            }
+        }
+    }
 }

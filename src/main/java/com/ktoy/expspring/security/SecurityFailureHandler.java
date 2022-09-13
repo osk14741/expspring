@@ -35,6 +35,8 @@ public class SecurityFailureHandler implements AuthenticationFailureHandler {
             response.sendRedirect("/security/login?error="+SecurityErrorCode.BAD_CREDENTIALS.getValue());
         } else {
             response.sendRedirect("/security/login");
+
+
         }
     }
 }
