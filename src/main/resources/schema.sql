@@ -24,3 +24,23 @@ create table if not exists board_table(
     content varchar(500) not null,
     regDate date default current_timestamp
 );
+
+create table if not exists chat_room(
+    chatIndex integer primary key auto_increment,
+    title varchar(255) not null,
+    description varchar(500),
+    owner integer not null,
+    regDate date default current_timestamp
+);
+
+create table if not exists chat_room_member(
+    chatIndex integer not null,
+    memberIdx integer not null
+);
+
+create table if not exists chat_room_message(
+    chatIndex integer not null,
+    memberIdx integer not null,
+    message varchar(500) not null,
+    regDate date default current_timestamp
+);

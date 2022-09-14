@@ -2,6 +2,7 @@ package com.ktoy.expspring.socket;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -9,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class SocketController {
 
     @RequestMapping(value="/socket/chat")
-    public String socketChat(){
-        log.info("@ChatController, chat Get()");
+    public String socketChat(Model model){
 
-        return "socket/chat";
+
+        return "socket/chat.html";
     }
 
 }

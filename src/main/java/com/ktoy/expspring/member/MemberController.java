@@ -4,6 +4,8 @@ import com.ktoy.expspring.event.CustomEventPublisher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -61,7 +63,13 @@ public class MemberController {
     }
 
     @PostMapping(value = "/Sign_in.do")
-    public ModelAndView signIn(MemberDTO memberDTO) {
+    public ModelAndView signIn(@Validated MemberDTO memberDTO, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            ModelAndView mav = new ModelAndView();
+            mav.setViewName("/member/register.html");
+            mav.addObject("member", memberDTO);
+            return mav;
+        }
 
         ModelAndView mav = new ModelAndView();
 
