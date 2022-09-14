@@ -26,6 +26,11 @@
   <input type="button" value="BOARD LIST" onclick="location.href='/board/list'"/>
 </div>
 <hr>
+<div style="text-align: center;">
+  <a href="http://localhost:3000/api/data/">/api/data</a>
+  <a href="http://localhost:3000/">/</a>
+</div>
+<hr>
 <div style="text-align: center; font-size: 5pt;" th:each="item : ${showFileInDirList}">
   <p th:text="${item}"></p>
 </div>
